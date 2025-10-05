@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan | Portfolio</title>
+
+    <link rel="icon" href="logo.PNG" type="image/x-icon">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
+
+        
+        :root {
+            
+            --primary-color: #00aaff; 
+            --primary-color-alt: #0088cc;
+            --text-color: #c0c0c0;
+            --body-color: #0f172a; 
+            --container-color: #1e293b; 
+            --title-color: #ffffff;
+            --border-color: #334155;
+
+          
+            --body-font: 'Roboto', sans-serif;
+            --title-font: 'Poppins', sans-serif;
+
+            
+            --h1-font-size: 2.5rem;
+            --h2-font-size: 1.5rem;
+            --h3-font-size: 1.25rem;
+            --normal-font-size: 1rem;
+            --small-font-size: 0.875rem;
+
+            
+            --font-medium: 500;
+            --font-semi-bold: 600;
+
+            --mb-2: 1rem;
+            --mb-4: 2rem;
+            --mb-5: 2.5rem;
+            --z-fixed: 100;
+        }
+
+     
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--title-font);
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section {
+            padding: 4rem 0 2rem;
+        }
+
+        .section-title {
+            font-size: var(--h2-font-size);
+            text-align: center;
+            margin-bottom: var(--mb-4);
+        }
+
+        .container {
+            max-width: 968px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+      
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: var(--z-fixed);
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            height: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo,
+        .nav-toggle {
+            color: var(--title-color);
+            font-weight: var(--font-medium);
+        }
+
+        .nav-logo {
+            font-family: var(--title-font);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            font-weight: var(--font-medium);
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-toggle {
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none; 
+        }
+
+        .nav-toggle-checkbox {
+            display: none;
+        }
+
+        
+        .hero {
+            background-color: transparent; 
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-container {
+            text-align: center;
+        }
+        
+        .hero-content > * {
+            opacity: 0; 
+        }
+        
+        .hero-content h1 {
+            font-size: var(--h1-font-size);
+            margin-bottom: var(--mb-2);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-content h2 {
+            font-size: var(--h2-font-size);
+            color: var(--primary-color);
+            margin-bottom: var(--mb-2);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-content p {
+            max-width: 600px;
+            margin: 0 auto var(--mb-4);
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: var(--font-medium);
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        .button:hover {
+            background-color: var(--primary-color-alt);
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .button-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .about-container {
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .about-img {
+            width: 250px;
+            border-radius: 0.75rem;
+            justify-self: center;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+        }
+
+        .about-data h3 {
+            margin-top: var(--mb-2);
+            margin-bottom: var(--mb-2);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skills-list span {
+            background-color: #334155;
+            color: var(--title-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: var(--small-font-size);
+            font-weight: var(--font-medium);
+            transition: all 0.3s ease;
+        }
+        
+        .skills-list span:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-color);
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+ 
+        .projects-container {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background-color: var(--container-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-data {
+            padding: 1.5rem;
+        }
+
+        .project-data h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-stack {
+            display: block;
+            font-size: var(--small-font-size);
+            color: #94a3b8;
+            margin: 1rem 0;
+        }
+
+        .project-links a {
+            margin-right: 1rem;
+            font-weight: var(--font-medium);
+        }
+
+        .project-links i {
+            margin-right: 0.25rem;
+        }
+
+   
+        .contact-container {
+            text-align: center;
+        }
+
+        .contact-container p {
+            margin-bottom: var(--mb-2);
+        }
+
+        .social-links {
+            margin-top: var(--mb-4);
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 0 1rem;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background-color: transparent; 
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-container p {
+            font-size: var(--small-font-size);
+            color: #94a3b8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 3.5rem;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 3.5rem);
+                background-color: var(--container-color);
+                padding: 2rem;
+                box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+                transition: right 0.4s ease-in-out;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 2.5rem;
+                align-items: center;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-toggle-checkbox:checked ~ .nav-menu {
+                right: 0;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .about-container {
+                gap: 2.5rem;
+            }
+
+            .about-img {
+                width: 200px;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.25rem; }
+
+            .hero-content .button {
+                padding: 0.6rem 1.2rem;
+                font-size: var(--small-font-size);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="#home" class="nav-logo">Rizwan</a>
+            <input type="checkbox" id="nav-toggle-checkbox" class="nav-toggle-checkbox">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <label for="nav-toggle-checkbox" class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </label>
+        </nav>
+    </header>
+
+    <main>
+ 
+        <section class="hero" id="home">
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <h1>Hi, I'm Rizwan</h1>
+                    <h2>Web Developer | AI & ML Engineer | Open Source Contributor</h2>
+                    <p>I build clean, responsive web applications and develop AI chatbots & ML models. Passionate about modern tech and creating beautiful digital experiences.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="button">View My Work</a>
+                        <a href="Rizwan resume.pdf" class="button button-outline" download>Download Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="about section" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container container grid">
+                <img src="hero image.jpg" alt="A professional photo of Rizwan" class="about-img">
+                <div class="about-data">
+                    <p>
+                        I’m a passionate developer who loves turning ideas into impactful digital solutions. I enjoy learning new technologies, solving real-world problems through code, and constantly improving my skills through hands-on projects and collaborations.Also a data enthusiast with a strong foundation in Python, pandas, and scikit-learn. I enjoy exploring data, uncovering insights, and building machine learning models that help solve meaningful problems.
+                    </p>
+                    <h3>My Skills</h3>
+                    <div class="skills-list">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>Java</span>
+                        <span>Git</span>
+                        <span>Numpy</span>
+                        <span>Pandas</span>
+                        <span>Matplotlib</span>
+                        <span>Scikit-learn</span>
+                        <span>Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="projects section" id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-container container grid">
+                <article class="project-card">
+                    <img src="movie_duration_histogram.png" alt="Screenshot of Netflix data analysis project" class="project-img">
+                    <div class="project-data">
+                        <h3>Netflix Data Analysis Project</h3>
+                        <p>I analysed the Netflix Dataset and visualised it based on different parameters like movies, shows, release years, etc.</p>
+                        <span class="project-stack">Tech: Numpy, Pandas, Matplotlib</span>
+                        <div class="project-links">
+                            <a href="#https://www.linkedin.com/posts/rizwan-ahmad-khan-pathan-66a2a2367_dataanalytics-python-pandas-activity-7370875373720588288-hMfP?utm_source=share&utm_medium=member_android&rcm=ACoAAFr9QzIBzmPpjgBnY6hyGR76vWCaSBHxBL0" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#https://github.com/praktechy/Netflix-Data-Analysis-" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <img src="Screenshot 2025-08-23 193427.png" alt="Screenshot of Project Two" class="project-img">
+                    <div class="project-data">
+                        <h3>Weather Dashboard</h3>
+                        <p>A weather dashboard with geolocation enabled which changes background color based on the temperature and the weather conditions.</p>
+                        <span class="project-stack">Tech: Html, Css, WeatherApi</span>
+                        <div class="project-links">
+                            <a href="Recording 2025-08-23 204311.mp4" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#https://github.com/praktechy/Weather-Dashboard" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <img src="https://placehold.co/600x400/9d8189/ffffff?text=Blind+Man+Stick" alt="Screenshot of Project Three" class="project-img">
+                    <div class="project-data">
+                        <h3>Blind man Stick</h3>
+                        <p>A stick with sensors which helps the blind people to walk,it makes sounds when an obstacle is infront of the person.</p>
+                        <span class="project-stack">Tech:Arduino Uno, C</span>
+                        <div class="project-links">
+                            <a href="#https://github.com/praktechy/blindmanstick" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container container">
+                <p>I'm currently open to new opportunities. Feel free to reach out via email or connect with me on social media!</p>
+                <a href="mailto:rizwanahmadkhan450@gmail.com" class="button">Mail</a>
+                <div class="social-links">
+                    <a href="#https://github.com/praktechy" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#https://www.linkedin.com/in/rizwan-ahmad-khan-pathan-66a2a2367" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#https://www.instagram.com/prak_8002/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container container">
+            <p>&copy; 2025 Pathan Rizwan Ahmad Khan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
